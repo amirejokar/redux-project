@@ -14,7 +14,7 @@ const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
-      state.push(...action.payload.todos);
+      state.push(...action.payload);
     });
   },
 });
