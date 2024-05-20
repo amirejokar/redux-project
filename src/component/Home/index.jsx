@@ -33,7 +33,7 @@ export default function Home() {
     <div>
       <h1>show data of all users</h1>
       {users.map((user) => {
-        return <h5 key={user.id}>{user.firstname}</h5>;
+        return <h5 key={user._id}>{user.firstname}</h5>;
       })}
       <button onClick={removeHandler}> remove users</button>
     </div>
