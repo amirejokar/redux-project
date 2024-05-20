@@ -31,9 +31,15 @@ export default function Users() {
     <div>
       <h1>show data of all users</h1>
       {users.map((user) => {
-        return <h5 key={user._id}>{user.firstname}</h5>;
+        return (
+          <div key={user._id}>
+            <h5 >
+              {user.firstname}={user._id}
+            </h5>
+          <button onClick={() => removeHandler(user._id)}>delete</button>
+          </div>
+        );
       })}
-      <button onClick={removeHandler}> remove users</button>
     </div>
   );
 }
