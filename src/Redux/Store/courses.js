@@ -9,12 +9,27 @@ export const fetchCourses = createAsyncThunk(
       .then((data) => data);
   }
 );
+
+export const addCourse = createAsyncThunk(
+    "courses/addCourse",
+    async (data) => {
+        return fetch("https://redux-cms.iran.liara.run/api/courses",{
+            method : "POST ",
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(data)
+        })
+    }
+)
+
 const slice = createSlice({
   name: "courses",
   initialState: [],
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCourses.fulfilled, (state, action) => action.payload);
+    builder.addCase(addCourse.fulfilled , (state , action ) => {
+        const newCourses = state.push(...action.payload)
+    })
   },
 });
 
