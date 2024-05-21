@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../../Redux/store/users";
-import { removeUsers } from "../../Redux/store/users";
+import { fetchUsers , removeUsers } from "../../Redux/store/Users";
 import swal from "sweetalert";
 export default function Users() {
   const users = useSelector((state) => state.users);
