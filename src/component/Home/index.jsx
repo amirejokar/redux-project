@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div>
-      <Link to="/users"> users</Link>
-      <Link to="/courses"> courses</Link>
+    <>
+    <div className="d-flex justify-content-around mt-4">
+      <Link className="btn btn-primary fs-1" to="/users"> users</Link>
+      <Link className="btn btn-primary fs-1" to="/courses"> courses</Link>
     </div>
+    </>
   );
 }
