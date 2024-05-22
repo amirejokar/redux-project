@@ -1,0 +1,5 @@
+.image-back{
+    background-image: url("../../../public/images/nature.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
