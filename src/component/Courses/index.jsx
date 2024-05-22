@@ -37,7 +37,7 @@ export default function Courses() {
         return (
           <div className="d-flex my-3" key={course._id}>
             <h5>{course.title}</h5>
-            <button onClick={removeHandler}>remove this </button>
+            <button onClick={()=>removeHandler(course._id)}>remove this </button>
           </div>
         );
       })}
