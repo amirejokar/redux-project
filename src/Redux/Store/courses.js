@@ -38,9 +38,6 @@ const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCourses.fulfilled, (state, action) => action.payload);
-    // builder.addCase(addCourse.fulfilled , (state , action ) => {
-    //     const newCourses = state.push(...action.payload)
-    // })
     builder.addCase(removeCourse.fulfilled , (state  ,action) => {
       const newCourses = state.filter((course) => course._id !== action.payload)
       return newCourses;
