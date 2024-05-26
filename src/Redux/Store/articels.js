@@ -1,10 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchArtticles = createAsyncThunk("articles/fetchArtticles", async () => {
-  return fetch("https://redux-cms.iran.liara.run/api/articles")
-    .then((res) => res.json())
-    .then((data) => data);
-});
+export const fetchArtticles = createAsyncThunk(
+  "articles/fetchArtticles",
+  async () => {
+    return fetch("https://redux-cms.iran.liara.run/api/articles")
+      .then((res) => res.json())
+      .then((data) => data);
+  }
+);
 
 export const removeArticles = createAsyncThunk(
   "articles/removeArticles",
@@ -14,6 +17,21 @@ export const removeArticles = createAsyncThunk(
     })
       .then((res) => res.json())
       .then((data) => data);
+  }
+);
+
+export const addArticles = createAsyncThunk(
+  "articles/addArticles",
+  async (props) => {
+    return fetch("https://redux-cms.iran.liara.run/api/articles", {
+      method: "POST",
+      body: { ...props },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data ===>", data);
+        return data;
+      });
   }
 );
 
@@ -30,6 +48,10 @@ const slice = createSlice({
       const newState = state.filter(
         (articles) => articles.id !== action.payload.id
       );
+      return newState;
+    });
+    builder.addCase(addArticles.fulfilled, (state, action) => {
+      const newState = state.push(action.payload);
       return newState;
     });
   },
