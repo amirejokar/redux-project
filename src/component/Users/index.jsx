@@ -2,10 +2,24 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers , removeUsers } from "../../Redux/store/Users";
+import { addUser } from "../../Redux/store/Users";
 import swal from "sweetalert";
 export default function Users() {
   const users = useSelector((state) => state.users);
   const dispath = useDispatch();
+
+  //add new user test 
+  // const newUser = {
+  //   firstname : "amir",
+  //   lastname : "jokar",
+  //   username : "amirejokar",
+  //   email : "amir@gmail.com",
+  //   city : "shiraz",
+  //   age : 20,
+  // }
+
+  // dispath(addUser(newUser))
+  //finish add new user 
 
   useEffect(() => {
     dispath(fetchUsers());
@@ -33,7 +47,8 @@ export default function Users() {
         return (
           <div key={user._id}>
             <h5 >
-              {user.firstname}={user._id}
+              {user.firstname}"
+              {user.lastname}
             </h5>
           <button onClick={() => removeHandler(user._id)}>delete</button>
           </div>

@@ -15,6 +15,18 @@ export const removeUsers = createAsyncThunk("users/removeUsers", async (id) => {
     .then((data) => data);
 });
 
+export const addUser = createAsyncThunk("users/addUser", async (props) => {
+  return fetch("https://redux-cms.iran.liara.run/api/users", {
+    method: "POST",
+    body: { ...props },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("data ==> " , data);
+      return data ;
+    });
+});
+
 const slice = createSlice({
   name: "users",
   initialState: [],
@@ -25,6 +37,10 @@ const slice = createSlice({
       const newUsers = state.filter((user) => user.id !== action.payload.id);
       return newUsers;
     });
+    builder.addCase(addUser.fulfilled,(state , action ) => {
+      const newUsers = state.push(action.payload)
+      return newUsers;
+    })
   },
 });
 
