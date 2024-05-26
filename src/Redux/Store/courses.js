@@ -13,24 +13,27 @@ export const fetchCourses = createAsyncThunk(
 export const removeCourse = createAsyncThunk(
   "courses/removeCourse",
   async (id) => {
-    return fetch(`https://redux-cms.iran.liara.run/api/courses/${id}` ,{
+    return fetch(`https://redux-cms.iran.liara.run/api/courses/${id}`, {
       method: "DELETE",
     })
-    .then((res) => res.json())
-    .then((data) => data)
+      .then((res) => res.json())
+      .then((data) => data);
   }
-)
+);
 
 export const addCourse = createAsyncThunk(
-    "courses/addCourse",
-    async (data) => {
-        return fetch("https://redux-cms.iran.liara.run/api/courses",{
-            method : "POST ",
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify(data)
-        })
-    }
-)
+  "courses/addCourse",
+  async (props) => {
+    return fetch("https://redux-cms.iran.liara.run/api/courses", {
+      method: "POST ",
+      body: { ...props },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data ==> ", data);
+      });
+  }
+);
 
 const slice = createSlice({
   name: "courses",
@@ -38,10 +41,16 @@ const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCourses.fulfilled, (state, action) => action.payload);
-    builder.addCase(removeCourse.fulfilled , (state  ,action) => {
-      const newCourses = state.filter((course) => course._id !== action.payload.id)
+    builder.addCase(removeCourse.fulfilled, (state, action) => {
+      const newCourses = state.filter(
+        (course) => course._id !== action.payload.id
+      );
       return newCourses;
-    } )
+    });
+    builder.addCase(addCourse.fulfilled,(state , action) => {
+      const newCourses = state.push(action.payload)
+      return newCourses;
+    })
   },
 });
 
