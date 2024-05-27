@@ -13,7 +13,7 @@ export default function Sidebar() {
             alt="banner admin photo"
           />
           <div className="card-body">
-            <h4 className="card-title sidebar__top-name">ممد ممدیان</h4>
+            <h4 className="mt-5 card-title sidebar__top-name">ممد ممدیان</h4>
             <p className="card-text sidebar__top-email" lang="en">
                 از خوبای کوزه گری
             </p>
