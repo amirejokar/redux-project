@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import swal from "sweetalert";
 import { removeUsers } from "../../Redux/store/Users";
+import face from "./face.avif"
 export default function UserItem({
   _id,
   firstname,
@@ -162,7 +163,7 @@ export default function UserItem({
       <div className="uesrs__item">
         <div className="users__info">
           <img
-            src="../../img/admin/profile/banana.png"
+            src={face}
             alt="photo user"
             className="users__img"
           />
