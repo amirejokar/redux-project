@@ -2,8 +2,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import face from "./face.avif";
+import nature from "./nature.jpg"
 
-// import "./Infos.css";
+import "./index.css";
 
 export default function Infos() {
   return (
@@ -176,7 +177,7 @@ export default function Infos() {
                     <div className="change-profile-box px-0 d-flex gap-4 mb-4">
                       <div className="change-profile-input-box">
                         <img
-                          src="../../img/admin/profile/banana.png"
+                          src={face}
                           className="change-profile-pic"
                           alt=""
                         />
@@ -194,7 +195,7 @@ export default function Infos() {
 
                       <div className="change-banner-input-box">
                         <img
-                          src="../../img/admin/banner/banner.png"
+                          src={nature}
                           className="change-banner-pic"
                           alt=""
                         />
