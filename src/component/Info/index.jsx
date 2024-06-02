@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import face from "./face.avif";
 
-import "./Infos.css";
+// import "./Infos.css";
 
 export default function Infos() {
   return (
