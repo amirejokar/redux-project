@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "../../Redux/store/courses";
 import { Link } from "react-router-dom";
 import CourseBox from "../CourseBox";
-import "./index.css"
+import "./index.css";
 
 export default function Courses() {
   const courses = useSelector((state) => state.courses);
@@ -15,7 +15,6 @@ export default function Courses() {
   useEffect(() => {
     dispatch(fetchCourses());
   }, []);
-
 
   return (
     <div className="col-8 content px-0">
@@ -48,36 +47,38 @@ export default function Courses() {
           </li>
         </ul>
 
-        <div className="products products-container">
-          <div className="products__list products-wrapper">
-            {courses.map((course) => (
-              <CourseBox key={course._id} {...course} />
-            ))}
+        <div className="row ">
+          <div className="products products-container">
+            <div className="products__list products-wrapper">
+              {courses.map((course) => (
+                <CourseBox key={course._id} {...course} />
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className="new-course d-flex gap-2">
-          <button
-            className="btn-custome btn-custome__blue"
-            data-bs-toggle="modal"
-            data-bs-target="#new-product"
-          >
-            افزودن دوره جدید
-          </button>
-          <button
-            className="btn-custome btn-custome__red"
-            data-bs-toggle="modal"
-            data-bs-target="#add-discount-all-product"
-          >
-            اعمال تخفیف همه دوره‌ها
-          </button>
-          <button
-            className="btn-custome btn-custome__green btn-modal-new-category"
-            data-bs-toggle="modal"
-            data-bs-target="#add-new-category"
-          >
-            افزودن دسته بندی
-          </button>
+          <div className="new-course d-flex gap-2">
+            <button
+              className="btn-custome btn-custome__blue"
+              data-bs-toggle="modal"
+              data-bs-target="#new-product"
+            >
+              افزودن دوره جدید
+            </button>
+            <button
+              className="btn-custome btn-custome__red"
+              data-bs-toggle="modal"
+              data-bs-target="#add-discount-all-product"
+            >
+              اعمال تخفیف همه دوره‌ها
+            </button>
+            <button
+              className="btn-custome btn-custome__green btn-modal-new-category"
+              data-bs-toggle="modal"
+              data-bs-target="#add-new-category"
+            >
+              افزودن دسته بندی
+            </button>
+          </div>
         </div>
       </div>
     </div>
