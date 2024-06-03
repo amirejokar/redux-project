@@ -3,8 +3,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCourses, removeCourse } from "../../Redux/store/courses";
-import swal from "sweetalert";
+import { fetchCourses } from "../../Redux/store/courses";
+import { Link } from "react-router-dom";
+import CourseBox from "../CourseBox";
+import "./index.css"
 
 export default function Courses() {
   const courses = useSelector((state) => state.courses);
@@ -14,21 +16,6 @@ export default function Courses() {
     dispatch(fetchCourses());
   }, []);
 
-  const removeHandler = (_id) => {
-    swal({
-      title: "are you sure ? ",
-      icone: "warning",
-      buttons: ["no", "yes"],
-    }).then((result) => {
-      if (result) {
-        dispatch(removeCourse(_id));
-      }
-      swal({
-        title: "course removed successfully",
-        icon: "success",
-      });
-    });
-  };
 
   return (
     <div className="col-8 content px-0">
