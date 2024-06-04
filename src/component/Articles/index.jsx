@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchArticles } from "../../Redux/store/articels";
 
 export default function Articles() {
-  const articles = useSelector((state) => state.articles);
+  const articles = useSelector((state) => state.articls);
   const dispath = useDispatch();
 
   useEffect(() => {
