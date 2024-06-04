@@ -1,11 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchArtticles = createAsyncThunk(
-  "articles/fetchArtticles",
+export const fetchArticles = createAsyncThunk(
+  "articles/fetchArticles",
   async () => {
     return fetch("https://redux-cms.iran.liara.run/api/articles")
       .then((res) => res.json())
-      .then((data) => data);
+      .then((data) => {
+        console.log("artiii ===>" , data);
+        return data;
+      });
   }
 );
 
@@ -40,10 +43,12 @@ const slice = createSlice({
   initialState: [],
   reducers: {},
   extraReducers: (builder) => {
+
     builder.addCase(
-      fetchArtticles.fulfilled,
+      fetchArticles.fulfilled,
       (state, action) => action.payload
     );
+
     builder.addCase(removeArticles.fulfilled, (state, action) => {
       const newState = state.filter(
         (articles) => articles.id !== action.payload.id

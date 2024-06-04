@@ -1,20 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-// import ArticleBox from "./../../components/ArticleBox/ArticleBox";
 import "./index.css";
+import ArticleBox from "../ArticleBox";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchArtticles } from "../../Redux/store/articels";
+import { fetchArticles } from "../../Redux/store/articels";
 
 export default function Articles() {
   const articles = useSelector((state) => state.articles);
   const dispath = useDispatch();
-  console.log("articles", articles);
 
   useEffect(() => {
-    dispath(
-        fetchArtticles()
-    );
+    dispath(fetchArticles());
   }, []);
 
   return (
@@ -50,9 +47,9 @@ export default function Articles() {
 
         <div className="articles">
           <div className="articles__list">
-            {/* {articles.map((article) => (
+            {articles?.map((article) => (
               <ArticleBox key={article._id} {...article} />
-            ))} */}
+            ))}
           </div>
         </div>
 
